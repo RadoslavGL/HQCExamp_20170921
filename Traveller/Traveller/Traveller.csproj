@@ -33,6 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Bytes2you.Validation, Version=2.0.0.0, Culture=neutral, PublicKeyToken=a7d501dd757e0442, processorArchitecture=MSIL">
+      <HintPath>..\packages\Bytes2you.Validation.2.0.0.0\lib\portable-win+net40+sl40+wp+Xbox40\Bytes2you.Validation.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -52,8 +55,15 @@
     <Compile Include="Commands\Listing\ListJourneysCommand.cs" />
     <Compile Include="Commands\Listing\ListTicketsCommand.cs" />
     <Compile Include="Commands\Listing\ListVehiclesCommand.cs" />
+    <Compile Include="Core\Contracts\IDatabase.cs" />
+    <Compile Include="Core\Contracts\IParser.cs" />
+    <Compile Include="Core\Contracts\IReader.cs" />
+    <Compile Include="Core\Contracts\IWriter.cs" />
     <Compile Include="Core\Factories\ITravellerFactory.cs" />
     <Compile Include="Core\Factories\TravellerFactory.cs" />
+    <Compile Include="Core\Providers\ConsoleReader.cs" />
+    <Compile Include="Core\Providers\ConsoleWriter.cs" />
+    <Compile Include="Core\Providers\Database.cs" />
     <Compile Include="Core\Providers\DateTimeProvider.cs" />
     <Compile Include="Core\Engine.cs" />
     <Compile Include="Core\Providers\CommandParser.cs" />
@@ -72,7 +82,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

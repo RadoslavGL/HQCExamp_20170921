@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Bytes2you.Validation;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using Traveller.Core.Contracts;
@@ -15,11 +16,7 @@ namespace Traveller.Core
         private const string NullProvidersExceptionMessage = "cannot be null.";
 
         //private static readonly Engine instanceHolder = new Engine();
-
-        //private readonly List<IVehicle> vehicles;
-        //private readonly List<IJourney> journeys;
-        //private readonly List<ITicket> tickets;
-
+        
         private readonly IReader reader;
         private readonly IWriter writer;
         private readonly IParser parser;
@@ -32,6 +29,9 @@ namespace Traveller.Core
             this.writer = writer;
             this.parser = parser;
 
+            Guard.WhenArgument(reader, "reader").IsNull().Throw();
+            Guard.WhenArgument(writer, "writer").IsNull().Throw();
+            Guard.WhenArgument(parser, "parser").IsNull().Throw();
         }
 
         //public static Engine Instance

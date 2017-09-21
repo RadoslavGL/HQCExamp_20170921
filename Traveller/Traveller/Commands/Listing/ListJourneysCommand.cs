@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Bytes2you.Validation;
+using System;
 using System.Collections.Generic;
 using Traveller.Commands.Contracts;
 using Traveller.Core;
@@ -13,6 +14,8 @@ namespace Traveller.Commands.Creating
         public ListJourneysCommand(IDatabase database)
         {
             this.database = database;
+
+            Guard.WhenArgument(database, "database").IsNull().Throw();
         }
 
         public string Execute(IList<string> parameters)

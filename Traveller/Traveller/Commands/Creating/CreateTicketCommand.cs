@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Bytes2you.Validation;
+using System;
 using System.Collections.Generic;
 using Traveller.Commands.Contracts;
 using Traveller.Core;
@@ -18,6 +19,9 @@ namespace Traveller.Commands.Creating
         {
             this.travellerFactory = travellerFactory;
             this.database = database;
+
+            Guard.WhenArgument(travellerFactory, "travellerFactory").IsNull().Throw();
+            Guard.WhenArgument(database, "database").IsNull().Throw();
         }
 
         public string Execute(IList<string> parameters)
