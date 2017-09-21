@@ -1,10 +1,12 @@
-﻿using Ninject.Modules;
+﻿using Ninject;
+using Ninject.Modules;
 using Traveller.Commands.Contracts;
 using Traveller.Commands.Creating;
 using Traveller.Core;
 using Traveller.Core.Contracts;
 using Traveller.Core.Factories;
 using Traveller.Core.Providers;
+using Traveller.Decorator;
 
 namespace Traveller.Ninject
 {
@@ -14,7 +16,16 @@ namespace Traveller.Ninject
         {
             this.Bind<IReader>().To<ConsoleReader>();
             this.Bind<IWriter>().To<ConsoleWriter>();
+
             this.Bind<IEngine>().To<Engine>().InSingletonScope();
+
+            //this.Bind<IEngine>().To<Engine>().InSingletonScope().Named("EngineInternal");
+            //this.Bind<IEngine>()
+            //    .To<TimerDecorator>()
+            //    .InSingletonScope()
+            //    .Named("EngineWithDecorator")
+            //    .WithConstructorArgument(this.Kernel.Get<IEngine>("EngineInternal"));
+
             this.Bind<IParser>().To<CommandParser>().InSingletonScope();
             this.Bind<IDatabase>().To<Database>().InSingletonScope();
             this.Bind<ITravellerFactory>().To<TravellerFactory>().InSingletonScope();

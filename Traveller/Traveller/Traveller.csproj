@@ -73,6 +73,7 @@
     <Compile Include="Core\Providers\DateTimeProvider.cs" />
     <Compile Include="Core\Engine.cs" />
     <Compile Include="Core\Providers\CommandParser.cs" />
+    <Compile Include="Decorator\TimerDecorator.cs" />
     <Compile Include="Models\Abstractions\IJourney.cs" />
     <Compile Include="Models\Abstractions\ITicket.cs" />
     <Compile Include="Models\Ticket.cs" />
