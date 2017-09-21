@@ -54,6 +54,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commands\Creating\CreateTicketCommandTests\Constructor_Should.cs" />
     <Compile Include="Commands\Creating\CreateTicketCommandTests\Execute_Should.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
