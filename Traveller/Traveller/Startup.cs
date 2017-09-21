@@ -12,8 +12,8 @@ namespace Traveller
             //Engine.Instance.Start();
 
             IKernel kernel = new StandardKernel(new TravellerModule());
-            IEngine engine = kernel.Get<IEngine>();
-            //IEngine engine = kernel.Get<IEngine>("EngineWithDecorator");
+            //IEngine engine = kernel.Get<IEngine>();
+            IEngine engine = kernel.Get<IEngine>("EngineWithDecorator");
             engine.Start();
 
         }

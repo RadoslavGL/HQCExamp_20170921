@@ -21,7 +21,6 @@ namespace Traveller.Decorator
 
         public void Start()
         {
-            string result = null;
             Stopwatch watch = new Stopwatch();
 
             this.writer.WriteLine("The Engine is starting...");
