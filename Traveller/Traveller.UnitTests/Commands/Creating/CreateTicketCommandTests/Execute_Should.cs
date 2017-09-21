@@ -11,7 +11,7 @@ using Traveller.Models.Abstractions;
 
 namespace Traveller.UnitTests.Commands.Creating.CreateTicketCommandTests
 {
-    //execute works - done, execute writes, execute throws exception
+    //execute works - done, execute writes - done, execute throws exception - done, but not working
     [TestClass]
     public class Execute_Should
     {

@@ -56,6 +56,9 @@
   <ItemGroup>
     <Compile Include="Commands\Creating\CreateTicketCommandTests\Constructor_Should.cs" />
     <Compile Include="Commands\Creating\CreateTicketCommandTests\Execute_Should.cs" />
+    <Compile Include="Core\Providers\CommandParserTests\Constructor_Should.cs" />
+    <Compile Include="Core\Providers\CommandParserTests\ParseCommand_Should.cs" />
+    <Compile Include="Core\Providers\CommandParserTests\ParseParameters_Should.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
