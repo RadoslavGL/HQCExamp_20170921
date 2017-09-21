@@ -10,12 +10,10 @@ using Traveller.Models.Vehicles.Abstractions;
 
 namespace Traveller.Core
 {
-    public class Engine
+    public class Engine : IEngine
     {
         private const string TerminationCommand = "Exit";
         private const string NullProvidersExceptionMessage = "cannot be null.";
-
-        //private static readonly Engine instanceHolder = new Engine();
         
         private readonly IReader reader;
         private readonly IWriter writer;
@@ -33,38 +31,6 @@ namespace Traveller.Core
             Guard.WhenArgument(writer, "writer").IsNull().Throw();
             Guard.WhenArgument(parser, "parser").IsNull().Throw();
         }
-
-        //public static Engine Instance
-        //{
-        //    get
-        //    {
-        //        return instanceHolder;
-        //    }
-        //}
-
-        //public IList<IVehicle> Vehicles
-        //{
-        //    get
-        //    {
-        //        return this.vehicles;
-        //    }
-        //}
-        
-        //public IList<IJourney> Journeys
-        //{
-        //    get
-        //    {
-        //        return this.journeys;
-        //    }
-        //}
-
-        //public IList<ITicket> Tickets
-        //{
-        //    get
-        //    {
-        //        return this.tickets;
-        //    }
-        //}
 
         public void Start()
         {

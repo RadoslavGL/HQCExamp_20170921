@@ -13,9 +13,9 @@ namespace Traveller.Commands.Creating
 
         public ListVehiclesCommand(IDatabase database)
         {
-            this.database = database;
-
             Guard.WhenArgument(database, "database").IsNull().Throw();
+
+            this.database = database;
         }
 
         public string Execute(IList<string> parameters)

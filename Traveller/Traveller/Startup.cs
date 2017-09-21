@@ -1,4 +1,7 @@
-﻿using Traveller.Core;
+﻿using Ninject;
+using Traveller.Core;
+using Traveller.Core.Contracts;
+using Traveller.Ninject;
 
 namespace Traveller
 {
@@ -6,7 +9,12 @@ namespace Traveller
     {
         public static void Main(string[] args)
         {
-            Engine.Instance.Start();
+            //Engine.Instance.Start();
+
+            IKernel kernel = new StandardKernel(new TravellerModule());
+            IEngine engine = kernel.Get<IEngine>();
+            engine.Start();
+
         }
     }
 }

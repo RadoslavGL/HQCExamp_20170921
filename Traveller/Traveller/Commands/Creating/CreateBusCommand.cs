@@ -15,11 +15,12 @@ namespace Traveller.Commands.Creating
 
         public CreateBusCommand(ITravellerFactory travellerFactory, IDatabase database)
         {
-            this.travellerFactory = travellerFactory;
-            this.database = database;
-
             Guard.WhenArgument(travellerFactory, "travellerFactory").IsNull().Throw();
             Guard.WhenArgument(database, "database").IsNull().Throw();
+
+            this.travellerFactory = travellerFactory;
+            this.database = database;
+            
         }
 
         public string Execute(IList<string> parameters)

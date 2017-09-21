@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using Traveller.Commands.Contracts;
+using Traveller.Core.Contracts;
 
 namespace Traveller.Core.Providers
 {
-    public class CommandParser
+    public class CommandParser : IParser
     {
         public ICommand ParseCommand(string fullCommand)
         {
