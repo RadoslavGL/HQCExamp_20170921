@@ -2,14 +2,22 @@
 using System.Collections.Generic;
 using Traveller.Commands.Contracts;
 using Traveller.Core;
+using Traveller.Core.Contracts;
 
 namespace Traveller.Commands.Creating
 {
     public class ListTicketsCommand : ICommand
     {
+        private readonly IDatabase database;
+
+        public ListTicketsCommand(IDatabase database)
+        {
+            this.database = database;
+        }
+
         public string Execute(IList<string> parameters)
         {
-            var tickets = Engine.Instance.Tickets;
+            var tickets = this.database.Tickets;
 
             if (tickets.Count == 0)
             {

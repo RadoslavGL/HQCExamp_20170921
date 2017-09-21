@@ -32,9 +32,6 @@ namespace Traveller.Core
             this.writer = writer;
             this.parser = parser;
 
-            //this.vehicles = new List<IVehicle>();
-            //this.journeys = new List<IJourney>();
-            //this.tickets = new List<ITicket>();
         }
 
         //public static Engine Instance

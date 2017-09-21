@@ -2,12 +2,22 @@
 using System.Collections.Generic;
 using Traveller.Commands.Contracts;
 using Traveller.Core;
+using Traveller.Core.Contracts;
 using Traveller.Core.Factories;
 
 namespace Traveller.Commands.Creating
 {
     public class CreateAirplaneCommand : ICommand
     {
+        private readonly ITravellerFactory travellerFactory;
+        private readonly IDatabase database;
+
+        public CreateAirplaneCommand(ITravellerFactory travellerFactory, IDatabase database)
+        {
+            this.travellerFactory = travellerFactory;
+            this.database = database;
+        }
+
         public string Execute(IList<string> parameters)
         {
             int passengerCapacity;
@@ -25,10 +35,10 @@ namespace Traveller.Commands.Creating
                 throw new ArgumentException("Failed to parse CreateAirplane command parameters.");
             }
 
-            var airplane = TravellerFactory.Instance.CreateAirplane(passengerCapacity, pricePerKilometer, hasFreeFood);
-            Engine.Instance.Vehicles.Add(airplane);
+            var airplane = this.travellerFactory.CreateAirplane(passengerCapacity, pricePerKilometer, hasFreeFood);
+            this.database.Vehicles.Add(airplane);
 
-            return $"Vehicle with ID {Engine.Instance.Vehicles.Count - 1} was created.";
+            return $"Vehicle with ID {this.database.Vehicles.Count - 1} was created.";
         }
     }
 }

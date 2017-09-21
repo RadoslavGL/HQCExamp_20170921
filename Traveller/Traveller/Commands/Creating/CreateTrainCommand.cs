@@ -2,12 +2,22 @@
 using System.Collections.Generic;
 using Traveller.Commands.Contracts;
 using Traveller.Core;
+using Traveller.Core.Contracts;
 using Traveller.Core.Factories;
 
 namespace Traveller.Commands.Creating
 {
     public class CreateTrainCommand : ICommand
     {
+        private readonly ITravellerFactory travellerFactory;
+        private readonly IDatabase database;
+
+        public CreateTrainCommand(ITravellerFactory travellerFactory, IDatabase database)
+        {
+            this.travellerFactory = travellerFactory;
+            this.database = database;
+        }
+
         public string Execute(IList<string> parameters)
         {
             int passengerCapacity;
@@ -25,10 +35,10 @@ namespace Traveller.Commands.Creating
                 throw new ArgumentException("Failed to parse CreateTrain command parameters.");
             }
 
-            var train = TravellerFactory.Instance.CreateTrain(passengerCapacity, pricePerKilometer, cartsCount);
-            Engine.Instance.Vehicles.Add(train);
+            var train = this.travellerFactory.CreateTrain(passengerCapacity, pricePerKilometer, cartsCount);
+            this.database.Vehicles.Add(train);
 
-            return $"Vehicle with ID {Engine.Instance.Vehicles.Count - 1} was created.";
+            return $"Vehicle with ID {this.database.Vehicles.Count - 1} was created.";
         }
     }
 }
