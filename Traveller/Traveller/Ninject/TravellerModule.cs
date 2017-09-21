@@ -18,17 +18,18 @@ namespace Traveller.Ninject
             this.Bind<IParser>().To<CommandParser>().InSingletonScope();
             this.Bind<IDatabase>().To<Database>().InSingletonScope();
             this.Bind<ITravellerFactory>().To<TravellerFactory>().InSingletonScope();
+            this.Bind<ICommandFactory>().To<CommandFactory>().InSingletonScope();
 
 
-            this.Bind<ICommand>().To<CreateAirplaneCommand>().Named("CreateAirplane");
-            this.Bind<ICommand>().To<CreateBusCommand>().Named("CreateBus");
-            this.Bind<ICommand>().To<CreateJourneyCommand>().Named("CreateJourney");
-            this.Bind<ICommand>().To<CreateTicketCommand>().Named("CreateTicket");
-            this.Bind<ICommand>().To<CreateTrainCommand>().Named("CreateTrain");
+            this.Bind<ICommand>().To<CreateAirplaneCommand>().Named("createairplane");
+            this.Bind<ICommand>().To<CreateBusCommand>().Named("createbus");
+            this.Bind<ICommand>().To<CreateJourneyCommand>().Named("createjourney");
+            this.Bind<ICommand>().To<CreateTicketCommand>().Named("createticket");
+            this.Bind<ICommand>().To<CreateTrainCommand>().Named("createtrain");
 
-            this.Bind<ICommand>().To<ListJourneysCommand>().Named("ListJourneys");
-            this.Bind<ICommand>().To<ListTicketsCommand>().Named("ListTickets");
-            this.Bind<ICommand>().To<ListVehiclesCommand>().Named("ListVehicles");
+            this.Bind<ICommand>().To<ListJourneysCommand>().Named("listjourneys");
+            this.Bind<ICommand>().To<ListTicketsCommand>().Named("listtickets");
+            this.Bind<ICommand>().To<ListVehiclesCommand>().Named("listvehicles");
         }
     }
 }

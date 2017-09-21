@@ -21,15 +21,16 @@ namespace Traveller.Core
 
         private StringBuilder Builder = new StringBuilder();
 
-        private Engine(IReader reader, IWriter writer, IParser parser)
+        public Engine(IReader reader, IWriter writer, IParser parser)
         {
+            Guard.WhenArgument(reader, "reader").IsNull().Throw();
+            Guard.WhenArgument(writer, "writer").IsNull().Throw();
+            Guard.WhenArgument(parser, "parser").IsNull().Throw();
+
             this.reader = reader;
             this.writer = writer;
             this.parser = parser;
 
-            Guard.WhenArgument(reader, "reader").IsNull().Throw();
-            Guard.WhenArgument(writer, "writer").IsNull().Throw();
-            Guard.WhenArgument(parser, "parser").IsNull().Throw();
         }
 
         public void Start()
@@ -38,7 +39,7 @@ namespace Traveller.Core
             {
                 try
                 {
-                    var commandAsString = this.reader.ReadLine(); ;
+                    var commandAsString = this.reader.ReadLine();
 
                     if (commandAsString.ToLower() == TerminationCommand.ToLower())
                     {

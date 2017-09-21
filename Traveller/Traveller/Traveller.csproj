@@ -58,11 +58,14 @@
     <Compile Include="Commands\Listing\ListJourneysCommand.cs" />
     <Compile Include="Commands\Listing\ListTicketsCommand.cs" />
     <Compile Include="Commands\Listing\ListVehiclesCommand.cs" />
+    <Compile Include="Core\Contracts\ICommandFactory.cs" />
     <Compile Include="Core\Contracts\IDatabase.cs" />
+    <Compile Include="Core\Contracts\IEngine.cs" />
     <Compile Include="Core\Contracts\IParser.cs" />
     <Compile Include="Core\Contracts\IReader.cs" />
     <Compile Include="Core\Contracts\IWriter.cs" />
-    <Compile Include="Core\Factories\ITravellerFactory.cs" />
+    <Compile Include="Core\Contracts\ITravellerFactory.cs" />
+    <Compile Include="Core\Factories\CommandFactory.cs" />
     <Compile Include="Core\Factories\TravellerFactory.cs" />
     <Compile Include="Core\Providers\ConsoleReader.cs" />
     <Compile Include="Core\Providers\ConsoleWriter.cs" />
@@ -80,6 +83,7 @@
     <Compile Include="Models\Vehicles\Abstractions\Vehicle.cs" />
     <Compile Include="Models\Journey.cs" />
     <Compile Include="Models\Vehicles\Train.cs" />
+    <Compile Include="Ninject\TravellerModule.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

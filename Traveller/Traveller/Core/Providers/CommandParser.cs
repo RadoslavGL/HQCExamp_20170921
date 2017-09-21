@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Bytes2you.Validation;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -9,13 +10,24 @@ namespace Traveller.Core.Providers
 {
     public class CommandParser : IParser
     {
+        private readonly ICommandFactory commandFactory;
+
+        public CommandParser(ICommandFactory commandFactory)
+        {
+            Guard.WhenArgument(commandFactory, "commandFactory").IsNull().Throw();
+            this.commandFactory = commandFactory;
+        }
+
         public ICommand ParseCommand(string fullCommand)
         {
             var commandName = fullCommand.Split()[0];
-            var commandTypeInfo = this.FindCommand(commandName);
-            var command = Activator.CreateInstance(commandTypeInfo) as ICommand;
 
-            return command;
+            return this.commandFactory.ReturnCommand(commandName);
+
+            //var commandTypeInfo = this.FindCommand(commandName);
+            //var command = Activator.CreateInstance(commandTypeInfo) as ICommand;
+
+            //return command;
         }
 
         public IList<string> ParseParameters(string fullCommand)
