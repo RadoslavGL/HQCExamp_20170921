@@ -12,12 +12,14 @@ namespace Traveller.Core.Providers
     {
         private readonly ICommandFactory commandFactory;
 
+        //do a test here, if the time allows
         public CommandParser(ICommandFactory commandFactory)
         {
             Guard.WhenArgument(commandFactory, "commandFactory").IsNull().Throw();
             this.commandFactory = commandFactory;
         }
 
+        //do test here!
         public ICommand ParseCommand(string fullCommand)
         {
             var commandName = fullCommand.Split()[0];
@@ -30,6 +32,7 @@ namespace Traveller.Core.Providers
             //return command;
         }
 
+        //do test here!
         public IList<string> ParseParameters(string fullCommand)
         {
             var commandParts = fullCommand.Split().Skip(1).ToList();
