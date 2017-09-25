@@ -101,7 +101,7 @@ namespace Traveller.UnitTests.Commands.Creating.CreateTicketCommandTests
         }
 
         [TestMethod]
-        public void ThrowsExceptionWithSpecificText_WhenParametersAreNotInCorrectFormat()
+        public void ThrowsException_WhenParametersAreNotInCorrectFormat()
         {
             // Arrange
             var travellerFactoryMock = new Mock<ITravellerFactory>();
@@ -120,25 +120,25 @@ namespace Traveller.UnitTests.Commands.Creating.CreateTicketCommandTests
 
             List<string> parameters = new List<string>()
             {
-                "1",
+                "2",
                 "100"
             };
 
             string expectedResult = "Failed to parse CreateTicket command parameters.";
 
-            travellerFactoryMock.Setup(m => m.CreateTicket(secondJourneyMock.Object, administrativeCosts)).Returns(ticketMock.Object);
+            //travellerFactoryMock.Setup(m => m.CreateTicket(secondJourneyMock.Object, administrativeCosts)).Returns(ticketMock.Object);
 
-            databaseMock.Setup(m => m.Journeys).Throws(new ArgumentException());
+            databaseMock.Setup(m => m.Journeys).Returns(journeys);
             databaseMock.Setup(m => m.Tickets).Returns(tickets);
 
             CreateTicketCommand command =
                 new CreateTicketCommand(travellerFactoryMock.Object, databaseMock.Object);
 
             // Act
-            string result = command.Execute(parameters);
+            command.Execute(parameters);
 
             // Assert
-            Assert.AreEqual(expectedResult, result);
+            Assert.Fail(expectedResult);
         }
     }
 }
